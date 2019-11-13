@@ -51,6 +51,81 @@
 
 const minesweeper = {};
 
+minesweeper.gameboard = [
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0},
+  {bomb: false, bombNum: 0}
+]
+
+minesweeper.adjacencies = [-9, -8, -7, -1, +1, +7, +8, +9];
+
 minesweeper.setBombs = function(){
   for (i = 1; i <= 10; ++i){
     let randomSquare = Math.floor(Math.random() * 64 + 1);
@@ -58,25 +133,11 @@ minesweeper.setBombs = function(){
     if (bombSquare.hasClass("bomb")) {
       randomSquare = Math.floor(Math.random() * 64 + 1);
       bombSquare = $(`li:nth-of-type(${randomSquare})`);
-      bombSquare.addClass("bomb");
+      bombSquare.removeClass("blank").addClass("bomb");
     } else {
-      bombSquare.addClass("bomb");
+      bombSquare.removeClass("blank").addClass("bomb");
     }
   }
-}
-
-//ok let's pseudocode it out.
-// I want an array of each li WITHOUT the 'bomb' li.
-// assign a num.
-
-//ALT: do it the long way. check each square.
-
-minesweeper.checkBombs = function(){
-  const squares = $("li");
-  console.log(squares);
-  const notBombs = squares.filter(function(square){
-    return square.
-  })
 }
 
 minesweeper.clickSquare = function() {
@@ -105,10 +166,33 @@ minesweeper.init = function() {
   minesweeper.setBombs();
   minesweeper.bombs = $(".bomb");
   minesweeper.clickSquare()
-  minesweeper.checkBombs();
+  // minesweeper.checkBombs();
 }
 
 $(function() {
-  minesweeper.init();
+  console.log(minesweeper.gameboard.length)
+  // minesweeper.init();
+  // for (i = 1; i <= 64; ++i) {
+  //   const thisSquare = $(`li:nth-of-type(${i})`);
+  //   minesweeper.adjacencies.forEach(function(adjacency) {
+  //     const $otherSquare = $(`li:nth-of-type(${i + adjacency})`);
+  //     console.log($otherSquare);
+  //     //ok not quite but it's a start!
+  //     //border squares need helping...
+  //     //starting to think it may be worth my while to make the array...
+    // })
+  // }
+  // const allSquares = $("li");
+  // // console.log(allSquares);
+  // for (let square in allSquares) {
+  //   const $thisSquare = $(`li:nth-of-type(${square})`);
+  //   if ($thisSquare.hasClass("blank")) {
+  //     let numBombs;
+  //     minesweeper.adjacencies.forEach (function(adjacency) {
+  //       const $otherSquare = $(`li:nth-of-type(${square + adjacency})`);
+  //       console.log(square, adjacency);
+  //     })
+  //   }
+  // }
 })
 
