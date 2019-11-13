@@ -22,7 +22,13 @@
     background-color: $mainLight;
   }
   .flag {
-    background-color: red;
+    position: relative;
+    &::before{
+      font-family: $fontAwe;
+      content: '\f024';
+      position: absolute;
+      @include posaCenter;
+    }
   }
   .bomb {
     background-color: $black;

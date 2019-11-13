@@ -3,3 +3,13 @@ $white: #f8efe3;
 $mainDark: #715245;
 $mainLight: #d0a98f;
 $popColor: #f78764;
+
+$fontAwe: "Font Awesome 5 Free";
+
+@mixin posaCenter {
+  text-align: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

@@ -67,14 +67,6 @@ minesweeper.setBombs = function(){
 
 minesweeper.clickSquare = function() {
   $("ul").on("click", "li", function(){
-    // if ($(this).hasClass("bomb")) {
-    //   alert("You lose!");
-    //   $("ul").unbind("click");
-    // } else if ($(this).hasClass("hidden flag")) {
-    //   $(this).removeClass("hidden").removeClass("flag").addClass("unhidden");
-    // } else if ($(this).hasClass("hidden")) {
-    //   $(this).addClass("flag");
-    // }
     if ($(this).hasClass("flag")) {
       $(this).removeClass("hidden").removeClass("flag").addClass("unhidden");
       if ($(this).hasClass("bomb")) {

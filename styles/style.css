@@ -239,7 +239,18 @@ body {
 }
 
 .game-container .flag {
-  background-color: red;
+  position: relative;
+}
+
+.game-container .flag::before {
+  font-family: "Font Awesome 5 Free";
+  content: '\f024';
+  position: absolute;
+  text-align: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .game-container .bomb {
