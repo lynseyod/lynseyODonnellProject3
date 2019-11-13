@@ -67,14 +67,24 @@ minesweeper.setBombs = function(){
 
 minesweeper.clickSquare = function() {
   $("ul").on("click", "li", function(){
-    console.log(this);
+    if ($(this).hasClass("bomb")) {
+      alert("You lose!");
+      $("ul").unbind("click");
+    } else if ($(this).hasClass("hidden flag")) {
+      $(this).removeClass("hidden").removeClass("flag").addClass("unhidden");
+    } else if ($(this).hasClass("hidden")) {
+      $(this).addClass("flag");
+    }
   })
 }
 
-$(function() {
+minesweeper.init = function() {
   minesweeper.setBombs();
   minesweeper.bombs = $(".bomb");
-  console.log(minesweeper.bombs);
   minesweeper.clickSquare()
+}
+
+$(function() {
+  minesweeper.init();
 })
 
