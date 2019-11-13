@@ -1,0 +1,28 @@
+What Holiday Movie should you watch?!
+
+1. set up object with list of holiday movies
+  - each "movie" is an object
+    - title
+    - romantic(true/false)
+    - cartoon(true/false)
+    - snowy climate (true/false)
+
+2. User answers questions about preferences:
+  - do you want romance?
+  - should there be snow?
+  - live action or cartoon/claymation?
+
+3. on "submit":
+  - check which options are selected
+  - filter object for matching answers to user questions
+  - if more than one movie answers all questions:
+    - generate random index
+  - output title of final movie!
+
+MVP: 15 movies to start?
+  - no concern for platform
+
+Stretch Goals:
+- input movies you've ALREADY watched this season
+- silly Die Hard q to start it out.
+- consideration for different platforms (i.e. on Netflix vs not)

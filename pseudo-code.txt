@@ -1,0 +1,49 @@
+1. Set up base game:
+  a. generate mines:
+    - start a for loop; 
+      - for each bomb (10 for base game)
+        for (i = 1; i <= 10; ++i)
+      - generate random number between 1 and total grid items; store as randomSquare variable
+        const randomSquare = Math.floor(Math.Random() * gridItems)
+      - use nth-of-type(randomSquare) to select a grid item
+      - check if class of 'bomb' is already on the element
+        - if false, addClass("bomb")
+        - if true, generate a new number and check again
+    end of for loop
+
+  b. assign data to 'non-bomb' squares  
+    - for loop for all items in the grid
+      - check if it's a bomb
+      - check for adjacent bombs:
+        - for loop for columns
+          for (columns = -1; columns <= 1; ++columns)
+            - nested for loop for rows! Also -1 to 1
+              - use column/row num to select all adjacent li squares
+              - if li hasClass("bomb"), bombNum += 1
+              - if bombNum = 0, addClass("blank")
+                - else, addClass("num") and html(`<p>${bombNum}</p>`)
+    end of for loop
+
+  c. set up a counter! (10 bombs for base game)
+end of setup!
+
+(basic rules are click once to add a flag, click a flag to clear the square.)
+
+2. on click:
+  - if square is already unhidden: do nothing
+  - if square is hidden: addClass('flag')
+    - counter -= 1;
+    - when counter = 0, display win message!
+  - if square has class 'flag', removeClass('flag hidden')
+    - check if square has class 'bomb'
+      - if yes: end game, display lose message
+      - if no: display contents (the bombNum assigned in setup)
+        - if hasClass("blank")
+          - clear adjacent squares.
+          - same nested for loops as before! removeClass("hidden") from the adjacent squares.      
+
+
+Stretch Goals!
+  - beginner, intermediate, expert modes
+  - long-click to clear adjacent squares (the 'two-button' feature on classic game)
+  - long-click to flag 'maybe'?

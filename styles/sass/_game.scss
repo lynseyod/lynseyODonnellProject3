@@ -1,0 +1,22 @@
+.game-container {
+  width: 80vh;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(8, calc(100%/8));
+  grid-template-rows: repeat(8, calc(100%/8));
+  border: 1px solid black;
+  li {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: grey;
+  }
+  // .hidden {
+  // }
+  .flag {
+    background-color: red;
+  }
+  .bomb {
+    background-color: black;
+  }
+}
