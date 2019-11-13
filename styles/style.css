@@ -205,18 +205,37 @@ body {
   height: 80vh;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (calc(100%/8))[8];
-      grid-template-columns: repeat(8, calc(100%/8));
-  -ms-grid-rows: (calc(100%/8))[8];
-      grid-template-rows: repeat(8, calc(100%/8));
+  -ms-grid-columns: (calc(100%/8 - 2px))[8];
+      grid-template-columns: repeat(8, calc(100%/8 - 2px));
+  -ms-grid-rows: (calc(100%/8 - 2px))[8];
+      grid-template-rows: repeat(8, calc(100%/8 - 2px));
+  gap: 2px;
   border: 1px solid black;
 }
 
 .game-container li {
   width: 100%;
   height: 100%;
-  border: 1px solid black;
-  background-color: grey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.game-container .hidden {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d0a98f), to(#715245));
+  background-image: linear-gradient(to bottom right, #d0a98f, #715245);
+  border: 3px solid #383532;
+}
+
+.game-container .unhidden {
+  background-color: #d0a98f;
 }
 
 .game-container .flag {
@@ -224,5 +243,5 @@ body {
 }
 
 .game-container .bomb {
-  background-color: black;
+  background-color: #383532;
 }
