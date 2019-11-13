@@ -65,16 +65,32 @@ minesweeper.setBombs = function(){
   }
 }
 
+//ok let's pseudocode it out.
+// I want an array of each li WITHOUT the 'bomb' li.
+// assign a num.
+
+//ALT: do it the long way. check each square.
+
+minesweeper.checkBombs = function(){
+  const squares = $("li");
+  console.log(squares);
+  const notBombs = squares.filter(function(square){
+    return square.
+  })
+}
+
 minesweeper.clickSquare = function() {
   $("ul").on("click", "li", function(){
     if ($(this).hasClass("flag")) {
-      $(this).removeClass("hidden").removeClass("flag").addClass("unhidden");
+      $(this).removeClass("hidden").removeClass("flag").addClass("unhidden")
+      $(this).empty();
       if ($(this).hasClass("bomb")) {
         alert("You lose!");
         $("ul").unbind("click");  
       }
     } else if ($(this).hasClass("hidden")) {
       $(this).addClass("flag");
+      $(this).html(`<i class="fas fa-flag"></i>`);
     }
 
     const unhiddenShit = $(".unhidden");
@@ -89,6 +105,7 @@ minesweeper.init = function() {
   minesweeper.setBombs();
   minesweeper.bombs = $(".bomb");
   minesweeper.clickSquare()
+  minesweeper.checkBombs();
 }
 
 $(function() {
