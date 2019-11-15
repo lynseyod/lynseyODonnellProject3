@@ -11,8 +11,6 @@
     // if false, .addClass("bomb")
 // end of for loop
 
-
-
 // for loop for all items in the grid
   // check for adjacent bombs
     // -1 column, -1 row   // THINK OF A WAY TO CLEAN THIS UP
@@ -53,14 +51,37 @@ const minesweeper = {};
 
 minesweeper.setBombs = function(){
   for (i = 1; i <= 10; ++i){
-    let randomSquare = Math.floor(Math.random() * 64 + 1);
-    let bombSquare = $(`li:nth-of-type(${randomSquare})`);
+    let randomCol = Math.floor(Math.random() * 8 + 1);
+    let randomSquare = Math.floor(Math.random() * 8 + 1);
+    let bombSquare = $(`ul:nth-of-type(${randomCol}) li:nth-of-type(${randomSquare})`);
     if (bombSquare.hasClass("bomb")) {
-      randomSquare = Math.floor(Math.random() * 64 + 1);
-      bombSquare = $(`li:nth-of-type(${randomSquare})`);
+      randomSquare = Math.floor(Math.random() * 8 + 1);
+      bombSquare = $(`ul:nth-of-type(${randomCol}) li:nth-of-type(${randomSquare})`);
       bombSquare.removeClass("blank").addClass("bomb");
     } else {
       bombSquare.removeClass("blank").addClass("bomb");
+    }
+  }
+}
+
+minesweeper.setNums = function(){
+  for (i = 1; i <= 8; ++i) {
+    for (j = 1; j <= 8; ++j) {
+      let bombNum = 0;
+      const thisSquare = $(`ul:nth-of-type(${i}) li:nth-of-type(${j})`);
+      for (x = -1; x <= 1; ++x) {
+        for (y = -1; y <= 1; ++y) {
+          const checkIt = $(`ul:nth-of-type(${i+x}) li:nth-of-type(${j+y})`);
+          if (checkIt !== thisSquare) {
+            if (checkIt.hasClass("bomb")) {
+              bombNum += 1;
+            }
+          }
+        }
+      }
+      if (bombNum !== 0 && thisSquare.hasClass("blank")) {
+        thisSquare.append(`<p class="num">${bombNum}</p>`);
+      }
     }
   }
 }
@@ -69,14 +90,12 @@ minesweeper.clickSquare = function() {
   $("ul").on("click", "li", function(){
     if ($(this).hasClass("flag")) {
       $(this).removeClass("hidden").removeClass("flag").addClass("unhidden")
-      $(this).empty();
       if ($(this).hasClass("bomb")) {
         alert("You lose!");
         $("ul").unbind("click");  
       }
     } else if ($(this).hasClass("hidden")) {
       $(this).addClass("flag");
-      $(this).html(`<i class="fas fa-flag"></i>`);
     }
 
     const unhiddenShit = $(".unhidden");
@@ -89,46 +108,12 @@ minesweeper.clickSquare = function() {
 
 minesweeper.init = function() {
   minesweeper.setBombs();
+  minesweeper.setNums();
   minesweeper.bombs = $(".bomb");
-  minesweeper.cols = $("ul");
   minesweeper.clickSquare()
-  // minesweeper.checkBombs();
 }
 
 $(function() {
-  // console.log(minesweeper.gameboard.length)
   minesweeper.init();
-  for (i = 0; i <= 7; ++i) {
-    const thisCol = minesweeper.cols[i];
-    const prevCol = minesweeper.cols[i-1];
-    const nextCol = minesweeper.cols[i+1];
-    console.log(thisCol);
-    for (notI = 0; notI <= 7; ++notI) {
-      const thisSquare = thisCol.children[notI];
-      
-    }
-  }
-  // for (i = 1; i <= 64; ++i) {
-  //   const thisSquare = $(`li:nth-of-type(${i})`);
-  //   minesweeper.adjacencies.forEach(function(adjacency) {
-  //     const $otherSquare = $(`li:nth-of-type(${i + adjacency})`);
-  //     console.log($otherSquare);
-  //     //ok not quite but it's a start!
-  //     //border squares need helping...
-  //     //starting to think it may be worth my while to make the array...
-    // })
-  // }
-  // const allSquares = $("li");
-  // // console.log(allSquares);
-  // for (let square in allSquares) {
-  //   const $thisSquare = $(`li:nth-of-type(${square})`);
-  //   if ($thisSquare.hasClass("blank")) {
-  //     let numBombs;
-  //     minesweeper.adjacencies.forEach (function(adjacency) {
-  //       const $otherSquare = $(`li:nth-of-type(${square + adjacency})`);
-  //       console.log(square, adjacency);
-  //     })
-  //   }
-  // }
 })
 

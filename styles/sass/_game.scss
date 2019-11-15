@@ -5,7 +5,7 @@
   max-height: 600px;
   display: flex;
   ul {
-    width: calc(100% / 8)
+    width: calc(100% / 8);
   }
   li {
     width: 100%;
@@ -15,9 +15,28 @@
     align-items: center;
     justify-content: center;
   }
+  .num {
+    color: black;
+  }
+  .flag {
+    position: relative;
+    &::before {
+      content: '🏴';
+      font-size: 2rem;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+  }
   .hidden {
     background-image: linear-gradient(to bottom right, $mainLight, $mainDark);
     border: 1px solid $black;
+    * {
+      display: none;
+    }
   }
   .unhidden {
     background-color: $mainLight;

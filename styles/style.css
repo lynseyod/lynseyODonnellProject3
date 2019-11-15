@@ -1,3 +1,4 @@
+@charset "UTF-8";
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
   display: block;
 }
@@ -179,6 +180,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   overflow: hidden;
 }
 
+html {
+  font-size: 125%;
+}
+
 ul,
 li {
   list-style-type: none;
@@ -229,10 +234,33 @@ body {
           justify-content: center;
 }
 
+.game-container .num {
+  color: black;
+}
+
+.game-container .flag {
+  position: relative;
+}
+
+.game-container .flag::before {
+  content: '🏴';
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
 .game-container .hidden {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d0a98f), to(#715245));
   background-image: linear-gradient(to bottom right, #d0a98f, #715245);
   border: 1px solid #383532;
+}
+
+.game-container .hidden * {
+  display: none;
 }
 
 .game-container .unhidden {
