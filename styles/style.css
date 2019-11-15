@@ -205,18 +205,18 @@ body {
   max-width: 600px;
   height: 90vw;
   max-height: 600px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[8];
-      grid-template-columns: repeat(8, 1fr);
-  -ms-grid-rows: (calc(100%/8 - 1px))[8];
-      grid-template-rows: repeat(8, calc(100%/8 - 1px));
-  gap: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.game-container ul {
+  width: calc(100% / 8);
 }
 
 .game-container li {
   width: 100%;
-  height: 100%;
+  height: calc(100% / 8);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -51,8 +51,6 @@
 
 const minesweeper = {};
 
-minesweeper.adjacencies = [-9, -8, -7, -1, +1, +7, +8, +9];
-
 minesweeper.setBombs = function(){
   for (i = 1; i <= 10; ++i){
     let randomSquare = Math.floor(Math.random() * 64 + 1);
@@ -89,28 +87,27 @@ minesweeper.clickSquare = function() {
   })
 }
 
-// corners must be handled on their own.
-// edges must be handled separately.
-// all middle squares can run through one function? or line by line ugh.
-minesweeper.setNums(currentSquare, adjSquares) = function {
-  let numBombs;
-  adjSquares.forEach((square) => {
-    if (){
-
-    }
-  })
-}
-
 minesweeper.init = function() {
   minesweeper.setBombs();
   minesweeper.bombs = $(".bomb");
+  minesweeper.cols = $("ul");
   minesweeper.clickSquare()
   // minesweeper.checkBombs();
 }
 
 $(function() {
-  console.log(minesweeper.gameboard.length)
-  // minesweeper.init();
+  // console.log(minesweeper.gameboard.length)
+  minesweeper.init();
+  for (i = 0; i <= 7; ++i) {
+    const thisCol = minesweeper.cols[i];
+    const prevCol = minesweeper.cols[i-1];
+    const nextCol = minesweeper.cols[i+1];
+    console.log(thisCol);
+    for (i = 0; i <= 7; ++i) {
+      const thisSquare = thisCol.children[i];
+      console.log(thisSquare);
+    }
+  }
   // for (i = 1; i <= 64; ++i) {
   //   const thisSquare = $(`li:nth-of-type(${i})`);
   //   minesweeper.adjacencies.forEach(function(adjacency) {
