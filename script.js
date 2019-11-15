@@ -103,9 +103,9 @@ $(function() {
     const prevCol = minesweeper.cols[i-1];
     const nextCol = minesweeper.cols[i+1];
     console.log(thisCol);
-    for (i = 0; i <= 7; ++i) {
-      const thisSquare = thisCol.children[i];
-      console.log(thisSquare);
+    for (notI = 0; notI <= 7; ++notI) {
+      const thisSquare = thisCol.children[notI];
+      
     }
   }
   // for (i = 1; i <= 64; ++i) {
