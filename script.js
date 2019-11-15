@@ -51,79 +51,6 @@
 
 const minesweeper = {};
 
-minesweeper.gameboard = [
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0},
-  {bomb: false, bombNum: 0}
-]
-
 minesweeper.adjacencies = [-9, -8, -7, -1, +1, +7, +8, +9];
 
 minesweeper.setBombs = function(){
@@ -158,6 +85,18 @@ minesweeper.clickSquare = function() {
     if ($(".unhidden").length === ($("li").length - $(".bomb").length)) {
       alert("You win!");
       $("ul").unbind("click");
+    }
+  })
+}
+
+// corners must be handled on their own.
+// edges must be handled separately.
+// all middle squares can run through one function? or line by line ugh.
+minesweeper.setNums(currentSquare, adjSquares) = function {
+  let numBombs;
+  adjSquares.forEach((square) => {
+    if (){
+
     }
   })
 }
