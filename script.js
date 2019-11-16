@@ -56,7 +56,8 @@ minesweeper.clickSquare = function() {
     if ($(this).hasClass("flag")) {
       $(this).removeClass("flag").addClass("unhidden")
       if ($(this).hasClass("bomb")) {
-        alert("You lose!");
+        $(".results").addClass("gameEnd").append(`<h2>Oh no!</h2>
+        <p>You woke up the cats! Better luck next time.</p>`);
         $(".bomb").removeClass("hidden").addClass("unhidden").append(`<p>🙀</p>`)
         $("ul").unbind("click");
       }

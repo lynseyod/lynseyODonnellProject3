@@ -12,17 +12,19 @@ main {
   }
   @include mqTablet {
     padding-top: 10%;
-    h2 {
+    &>h2 {
       display: none;
     }
   }
 }
+
 .gameContainer {
   width: 90%;
   max-width: 400px;
   height: 90vw;
   max-height: 400px;
   display: flex;
+  position: relative;
   ul {
     width: calc(100% / 8);
     @include flexCenter;
@@ -47,7 +49,7 @@ main {
   }
   .flag {
     &::before {
-      content: '🏴';
+      content: '😻';
       font-size: 1rem;
       @include posaCenter;
       text-align: center;
@@ -61,5 +63,22 @@ main {
   }
   .unhidden {
     background-color: $mainLight;
+  }
+}
+
+.gameEnd {
+  border: 1px solid $black;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: $mainDark;
+  color: $white;
+  padding: 5%;
+  h2 {
+    color: $popColor;
   }
 }

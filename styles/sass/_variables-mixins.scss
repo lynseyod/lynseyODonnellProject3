@@ -4,8 +4,6 @@ $mainDark: #4c5454;
 $mainLight: #ff715b;
 $popColor: #1ea896;
 
-$fontAwe: "Font Awesome 5 Free";
-
 @mixin posaCenter {
   text-align: center;
   top: 0;
@@ -22,6 +20,12 @@ $fontAwe: "Font Awesome 5 Free";
 
 @mixin mqTablet {
   @media (min-width: 800px) {
+    @content;
+  }
+}
+
+@mixin mqDesktop {
+  @media (min-width: 900) {
     @content;
   }
 }

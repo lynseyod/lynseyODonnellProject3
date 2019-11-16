@@ -191,6 +191,21 @@ li {
   padding: 0;
 }
 
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 90vh;
+  }
+}
+
 body {
   width: 100%;
   display: -webkit-box;
@@ -251,6 +266,7 @@ header {
   width: 100%;
   height: 100vh;
   padding: 2%;
+  padding-bottom: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,16 +299,23 @@ header i {
   padding-top: 5%;
 }
 
+header .hint {
+  font-size: .8rem;
+  margin: 0;
+}
+
 @media (min-width: 800px) {
   header {
     padding-top: 10%;
+    padding-bottom: 0;
+    height: 100%;
   }
   header button {
     display: none;
   }
-  header h1 {
+  header .title {
     position: absolute;
-    top: 5%;
+    top: 2%;
     left: 0;
     right: 0;
     text-align: center;
@@ -331,7 +354,7 @@ main button:hover, main button:focus {
   main {
     padding-top: 10%;
   }
-  main h2 {
+  main > h2 {
     display: none;
   }
 }
@@ -344,6 +367,7 @@ main button:hover, main button:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
 }
 
 .gameContainer ul {
@@ -392,7 +416,7 @@ main button:hover, main button:focus {
 }
 
 .gameContainer .flag::before {
-  content: '🏴';
+  content: '😻';
   font-size: 1rem;
   text-align: center;
   top: 0;
@@ -413,4 +437,22 @@ main button:hover, main button:focus {
 
 .gameContainer .unhidden {
   background-color: #ff715b;
+}
+
+.gameEnd {
+  border: 1px solid #261d1a;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: #4c5454;
+  color: #fffaf5;
+  padding: 5%;
+}
+
+.gameEnd h2 {
+  color: #1ea896;
 }
