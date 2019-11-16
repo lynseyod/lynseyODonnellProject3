@@ -10,9 +10,40 @@ li {
 }
 
 body {
-  height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
+  font-family: 'karla', sans-serif;
+  background-color: $white;
+  color: $black;
+  @include mqTablet {
+    flex-direction: row;
+    main {
+      order: -1;
+    }
+  }
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: $mainLight;
+}
+
+h1,
+h2,
+.game-container {
+  font-family: 'ribeye', serif;
+}
+
+button {
+  border: none;
+  background: none;
+  font-size: 2rem;
+  color: $popColor;
+  margin: 0 auto;
 }

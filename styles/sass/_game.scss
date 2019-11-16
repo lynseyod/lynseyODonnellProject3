@@ -1,47 +1,65 @@
-.game-container {
+main {
+  width:100%;
+  height: 100vh;
+  @include flexCenter;
+  justify-content: space-evenly;
+  button {
+    transition: all 0.3s;
+    &:hover,
+    &:focus {
+      transform: rotate(180deg);
+    }
+  }
+  @include mqTablet {
+    padding-top: 10%;
+    h2 {
+      display: none;
+    }
+  }
+}
+.gameContainer {
   width: 90%;
-  max-width: 600px;
+  max-width: 400px;
   height: 90vw;
-  max-height: 600px;
+  max-height: 400px;
   display: flex;
   ul {
     width: calc(100% / 8);
+    @include flexCenter;
+    justify-content: space-between;
   }
   li {
-    width: 100%;
-    height: calc(100% / 8);
+    width: 95%;
+    height: calc(95% / 8);
     display: flex;
     border-radius: 10px;
     align-items: center;
     justify-content: center;
   }
-  .num {
-    color: black;
-  }
-  .flag {
-    position: relative;
-    &::before {
-      content: '🏴';
-      font-size: 2rem;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      text-align: center;
-    }
-  }
+  .flag,
   .hidden {
+    position: relative;
     background-image: linear-gradient(to bottom right, $mainLight, $mainDark);
     border: 1px solid $black;
     * {
       display: none;
     }
   }
+  .flag {
+    &::before {
+      content: '🏴';
+      font-size: 1rem;
+      @include posaCenter;
+      text-align: center;
+    }
+  }
+  .hidden {
+    &::before {
+      content: '📦';
+      @include posaCenter;
+    }
+  }
   .unhidden {
     background-color: $mainLight;
-  }
-  .bomb {
-    background-color: $black;
   }
 }

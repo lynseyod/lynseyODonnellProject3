@@ -1,8 +1,8 @@
-$black: #383532;
-$white: #f8efe3;
-$mainDark: #715245;
-$mainLight: #d0a98f;
-$popColor: #f78764;
+$black: #261d1a;
+$white: #fffaf5;
+$mainDark: #4c5454;
+$mainLight: #ff715b;
+$popColor: #1ea896;
 
 $fontAwe: "Font Awesome 5 Free";
 
@@ -12,4 +12,16 @@ $fontAwe: "Font Awesome 5 Free";
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin mqTablet {
+  @media (min-width: 800px) {
+    @content;
+  }
 }

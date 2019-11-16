@@ -5,94 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <!-- loading in animations, fonts, and styles. -->
+  <link href="https://fonts.googleapis.com/css?family=Karla|Ribeye&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/3d22ae5abd.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <link rel="stylesheet" href="./styles/style.css">
-  <title>Document</title>
+  <title>Minesweeper!</title>
 </head>
 <body>
-  <div class="game-container">
-    <ul class="col1">
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-    </ul>
-    <ul class="col2">
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-    </ul>
-    <ul class="col3">
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-    </ul>
-    <ul class="col4">
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-    </ul>
-    <ul class="col5">
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-    </ul>
-    <ul class="col6">
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-    </ul>
-    <ul class="col7">
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-    </ul>
-    <ul class="col8">
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-      <li class="hidden blank"></li>
-    </ul>
-  </div>
-  <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
+  <header>
+    <h1>Cat-sweeper!</h1>
+    <p>Oh no! Your cats have hidden in the boxes you're trying to unpack. Work through the boxes, but be sure not to disturb your sleeping kitties...</p>
+    <h2>Instructions</h2>
+    <p>Click a square once to mark it as a cat-owned space. Click a second time to clear the square.</p>
+    <p>Cleared squares will display how many cats they are immediately next to, horizontally, vertically, or diagonally.</p>
+    <p>The game ends when you click on a mine, or when you have cleared all non-mine squares!</p>
+    <label for="play" class="visuallyHidden">Play now!</label>
+    <a href="#game"><button class="animated infinite pulse" id="play"><i class="fas fa-chevron-down "></i></button></a>
+  </header>
+  <main>
+    <h2>Cat-sweeper!</h2>
+    <section class="gameContainer" id="game">
+      <ul class="col1">
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+      </ul>
+      <ul class="col2">
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+      </ul>
+      <ul class="col3">
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+      </ul>
+      <ul class="col4">
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+      </ul>
+      <ul class="col5">
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+      </ul>
+      <ul class="col6">
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+      </ul>
+      <ul class="col7">
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+      </ul>
+      <ul class="col8">
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+        <li class="hidden blank"></li>
+      </ul>
+    </section> <!-- .game-container -->
+    <button class="animated infinite pulse"><i class="fas fa-redo-alt"></i></button>
+  </main> <!-- the end. -->
+
+  <!-- loading jQuery, smooth scroll, and my ACTUAL MINESWEEPER PROGRAM -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
