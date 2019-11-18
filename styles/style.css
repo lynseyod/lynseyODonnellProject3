@@ -193,12 +193,13 @@ li {
 
 .wrapper {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 @media (min-width: 800px) {
   .wrapper {
+    position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -250,7 +251,8 @@ h2 {
 
 h1,
 h2,
-.game-container {
+.game-container,
+.countdown {
   font-family: 'ribeye', serif;
 }
 
@@ -306,8 +308,7 @@ header .hint {
 
 @media (min-width: 800px) {
   header {
-    padding-top: 10%;
-    padding-bottom: 0;
+    padding: 15% 0 0 0;
     height: 100%;
     text-align: left;
     -webkit-box-align: start;
@@ -357,10 +358,20 @@ main button:hover, main button:focus {
 @media (min-width: 800px) {
   main {
     padding-top: 10%;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   main > h2 {
     display: none;
   }
+  main button {
+    margin: 0 0 0 170px;
+  }
+}
+
+.countdown {
+  color: #1ea896;
 }
 
 .gameContainer {

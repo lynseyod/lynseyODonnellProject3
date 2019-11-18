@@ -12,10 +12,18 @@ main {
   }
   @include mqTablet {
     padding-top: 10%;
+    align-items: flex-start;
     &>h2 {
       display: none;
     }
+    button {
+      margin: 0 0 0 170px;
+    }
   }
+}
+
+.countdown {
+  color: $popColor;
 }
 
 .gameContainer {

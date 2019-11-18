@@ -24,8 +24,7 @@ header {
     margin: 0;
   }
   @include mqTablet {
-    padding-top: 10%;
-    padding-bottom: 0;
+    padding: 15% 0 0 0;
     height: 100%;
     text-align: left;
     align-items: flex-start;

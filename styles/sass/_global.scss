@@ -11,9 +11,10 @@ li {
 
 .wrapper {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   @include mqTablet {
+    position: relative;
     display: flex;
     height: 90vh;
   }
@@ -46,7 +47,8 @@ h2 {
 
 h1,
 h2,
-.game-container {
+.game-container,
+.countdown {
   font-family: 'ribeye', serif;
 }
 

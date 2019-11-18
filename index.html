@@ -23,12 +23,12 @@
       <p>Click a square once to mark it as a cat-owned space. Click a second time to clear the square.</p>
       <p>Cleared squares will display how many cats they are immediately next to horizontally, vertically, or diagonally.</p>
       <p>The game ends when you disturb a cat, or when you have cleared all non-cat boxes!</p>
-      <p class="hint">Hint: there are 10 cats hiding on you...</p>
       <label for="play" class="visuallyHidden">Play now!</label>
       <a href="#game"><button class="animated infinite pulse" id="play"><i class="fas fa-chevron-down "></i></button></a>
     </header>
     <main>
       <h2>Cat-sweeper!</h2> <!-- the actual game! -->
+      <p>Hiding cats: <span class="countdown"> <!-- javascript goes here--></span></p>
       <section class="gameContainer" id="game">
         <ul class="col1">
           <li class="hidden blank"></li>
