@@ -309,6 +309,10 @@ header .hint {
     padding-top: 10%;
     padding-bottom: 0;
     height: 100%;
+    text-align: left;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   header button {
     display: none;
@@ -404,7 +408,6 @@ main button:hover, main button:focus {
 
 .gameContainer .flag,
 .gameContainer .hidden {
-  position: relative;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#ff715b), to(#4c5454));
   background-image: linear-gradient(to bottom right, #ff715b, #4c5454);
   border: 1px solid #261d1a;
@@ -443,10 +446,23 @@ main button:hover, main button:focus {
   border: 1px solid #261d1a;
   border-radius: 10px;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 5%;
+  right: 5%;
+  bottom: 5%;
+  left: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   z-index: 1;
   background-color: #4c5454;
   color: #fffaf5;
@@ -455,4 +471,12 @@ main button:hover, main button:focus {
 
 .gameEnd h2 {
   color: #1ea896;
+}
+
+.gameEnd::before {
+  content: '✖';
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  right: 10px;
 }

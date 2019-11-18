@@ -40,7 +40,6 @@ main {
   }
   .flag,
   .hidden {
-    position: relative;
     background-image: linear-gradient(to bottom right, $mainLight, $mainDark);
     border: 1px solid $black;
     * {
@@ -51,14 +50,14 @@ main {
     &::before {
       content: '😻';
       font-size: 1rem;
-      @include posaCenter;
+      @include beforeCenter;
       text-align: center;
     }
   }
   .hidden {
     &::before {
       content: '📦';
-      @include posaCenter;
+      @include beforeCenter;
     }
   }
   .unhidden {
@@ -70,15 +69,26 @@ main {
   border: 1px solid $black;
   border-radius: 10px;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 5%;
+  right: 5%;
+  bottom: 5%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
   background-color: $mainDark;
   color: $white;
   padding: 5%;
   h2 {
     color: $popColor;
+  }
+  &::before {
+    content: '✖';
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    right: 10px;
   }
 }

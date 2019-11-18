@@ -65,8 +65,9 @@ minesweeper.clickSquare = function() {
       $(this).removeClass("hidden").addClass("flag");
     }
     if ($(".unhidden").length === ($("li").length - $(".bomb").length)) {
-      alert("You win!");
-      $("ul").unbind("click");
+      $(".results").addClass("gameEnd").append(`<h2>You win!</h2>
+      <p>You unpacked all of the boxes you could without disturbing your sleeping kitties! Great work!</p>`);
+    $("ul").unbind("click");
     }
   })
 }
@@ -77,10 +78,17 @@ minesweeper.refreshPage = function () {
   })
 }
 
+minesweeper.closeResults = function() {
+  $(".results").on("click", function(){
+    $(this).hide();
+  })
+}
+
 minesweeper.init = function() {
   minesweeper.setBombs();
   minesweeper.setNums();
-  minesweeper.clickSquare()
+  minesweeper.clickSquare();
+  minesweeper.closeResults();
   minesweeper.refreshPage();
 }
 
