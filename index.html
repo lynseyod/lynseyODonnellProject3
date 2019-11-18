@@ -20,16 +20,16 @@
         <p>Oh no! Your cats have hidden in the boxes you're trying to unpack. Work through the boxes, but be sure not to disturb your sleeping kitties...</p>
       </div>
       <h2>Instructions</h2>
-      <p>Click a square once to mark it as a cat-owned space. Click a second time to clear the square.</p>
+      <p>Click a square once to mark it as a cat-owned box. Click a second time to clear the square.</p>
       <p>Cleared squares will display how many cats they are immediately next to horizontally, vertically, or diagonally.</p>
       <p>The game ends when you disturb a cat, or when you have cleared all non-cat boxes!</p>
       <label for="play" class="visuallyHidden">Play now!</label>
       <a href="#game"><button class="animated infinite pulse" id="play"><i class="fas fa-chevron-down "></i></button></a>
     </header>
     <main>
-      <h2>Cat-sweeper!</h2> <!-- the actual game! -->
-      <p>Hiding cats: <span class="countdown"> <!-- javascript goes here--></span></p>
-      <section class="gameContainer" id="game">
+      <h2>Cat-sweeper!</h2>
+      <p>Hiding cats: <span class="countdown"> <!-- countdown goes here--></span></p>
+      <section class="gameContainer" id="game"> <!-- the actual game! -->
         <ul class="col1">
           <li class="hidden blank"></li>
           <li class="hidden blank"></li>
@@ -113,8 +113,9 @@
         <div class="results">
           <!-- empty div for game end! -->
         </div>
-      </section> <!-- .game-container -->
-      <button class="animated infinite pulse"><i class="fas fa-redo-alt"></i></button>
+      </section> <!-- .gameContainer -->
+      <label for="reload" class="visuallyHidden">Retry</label>
+      <button class="animated infinite pulse" id="reload"><i class="fas fa-redo-alt"></i></button>
     </main> <!-- the end. -->
   </div> <!-- .wrapper -->
   
