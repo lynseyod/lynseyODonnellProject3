@@ -3,7 +3,7 @@ main {
   height: 100vh;
   @include flexCenter;
   justify-content: space-evenly;
-  button {
+  &>button {
     transition: all 0.3s;
     &:hover,
     &:focus {
@@ -16,7 +16,7 @@ main {
     &>h2 {
       display: none;
     }
-    button {
+    &>button {
       margin: 0 0 0 170px;
     }
   }
@@ -45,14 +45,20 @@ main {
     border-radius: 10px;
     align-items: center;
     justify-content: center;
+    button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      &:hover,
+      &:focus {
+        font-size: 1.2rem;
+      }
+    }
   }
   .flag,
   .hidden {
     background-image: linear-gradient(to bottom right, $mainLight, $mainDark);
     border: 1px solid $black;
-    * {
-      display: none;
-    }
   }
   .flag {
     &::before {
@@ -60,12 +66,6 @@ main {
       font-size: 1rem;
       @include beforeCenter;
       text-align: center;
-    }
-  }
-  .hidden {
-    &::before {
-      content: '📦';
-      @include beforeCenter;
     }
   }
   .unhidden {

@@ -24,7 +24,13 @@ minesweeper.setBombs = function(){
     }
   }
   // initializing the countdown feature
-  minesweeper.countdown();  
+  minesweeper.countdown();
+}
+
+//function to update our countdown!
+minesweeper.countdown = function () {
+  const countdown = $(".bomb").length - $(".flag").length;
+  $(".countdown").html(`${countdown}`);
 }
 
 // function to calculate how many bombs any square is touching.
@@ -55,10 +61,9 @@ minesweeper.setNums = function(){
   }
 }
 
-//function to update our countdown!
-minesweeper.countdown = function () {
-  const countdown = $(".bomb").length - $(".flag").length;
-  $(".countdown").html(`${countdown}`);
+// function to check adjacent bombs when button is clicked.
+minesweeper.checkBombs = function() {
+
 }
 
 // event listener for the clicks!
@@ -109,7 +114,7 @@ minesweeper.closeResults = function() {
 // our two setup functions and our event listeners!
 minesweeper.init = function() {
   minesweeper.setBombs();
-  minesweeper.setNums();
+  // minesweeper.setNums();
   minesweeper.clickSquare();
   minesweeper.closeResults();
   minesweeper.refreshPage();
