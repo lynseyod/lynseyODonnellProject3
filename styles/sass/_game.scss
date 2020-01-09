@@ -48,6 +48,8 @@ main {
     button {
       background: none;
       border: none;
+      height: 100%;
+      width: 100%;
       font-size: 1rem;
       &:hover,
       &:focus {
@@ -59,14 +61,6 @@ main {
   .hidden {
     background-image: linear-gradient(to bottom right, $mainLight, $mainDark);
     border: 1px solid $black;
-  }
-  .flag {
-    &::before {
-      content: '😻';
-      font-size: 1rem;
-      @include beforeCenter;
-      text-align: center;
-    }
   }
   .unhidden {
     background-color: $mainLight;

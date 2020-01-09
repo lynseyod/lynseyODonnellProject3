@@ -62,8 +62,57 @@ minesweeper.setNums = function(){
 }
 
 // function to check adjacent bombs when button is clicked.
-minesweeper.checkBombs = function() {
+minesweeper.checkBombs = function(buttonIClicked) {
+  console.log(buttonIClicked)
+  const parentLi = buttonIClicked.parent();
+  const gParentUl = parentLi.parent();
+  if (parentLi.hasClass("bomb")) {
+    console.log("bomb!")
+    $(".results").addClass("gameEnd").append(`<h2>Oh no!</h2>
+    <p>You woke up the cats! Better luck next time.</p>`);
+    $(".bomb").removeClass("hidden").addClass("unhidden").html(`<p>🙀</p>`)
+    $("li button").unbind("click"); //stop the event listener when we lose.
+  } else {
+    // for loop to work through the columns
+    for (i = 1; i <= 8; ++i) {
+      // nested for loop to work through each li in the column
+      for (j = 1; j <= 8; ++j) {
+        let bombNum = 0;
+        const thisSquare = $(`ul:nth-of-type(${i}) li:nth-of-type(${j})`);
+        // first for loop to get through previous, current and next column
+        for (x = -1; x <= 1; ++x) {
+          // second for loop for previous, current, and next row.
+          for (y = -1; y <= 1; ++y) {
+            const checkIt = $(`ul:nth-of-type(${i+x}) li:nth-of-type(${j+y})`);
+            if (checkIt !== thisSquare) { //current square doesn't need to be checked.
+              if (checkIt.hasClass("bomb")) {
+                bombNum += 1;
+              }
+            }
+          }
+        }
+        // only displays non-0 values and only for 'blanks' (not bombs)
+        if (bombNum !== 0 && thisSquare.hasClass("blank")) {
+          thisSquare.removeClass("blank").append(`<p class="num">${bombNum}</p>`);
+        }
+      }
+    }
+  }
+}
 
+// function for button clicking!
+minesweeper.clickButton = function() {
+  $("li button").on("click", function(event) {
+    event.preventDefault();
+    const parentLi = $(this).parent();
+    if (parentLi.hasClass("hidden")) {
+      parentLi.removeClass("hidden").addClass("flag");
+      $(this).html("C")
+    } else if (parentLi.hasClass("flag")) {
+      parentLi.removeClass("flag").addClass("unhidden");
+      minesweeper.checkBombs($(this));
+    }
+  })
 }
 
 // event listener for the clicks!
@@ -96,7 +145,7 @@ minesweeper.clickSquare = function() {
 
 // literally just refreshes the page when you click the "refresh" button below game.
 minesweeper.refreshPage = function () {
-  $("main button").on("click", function(){
+  $("#reload").on("click", function(){
     location.reload();
   })
 }
@@ -114,8 +163,7 @@ minesweeper.closeResults = function() {
 // our two setup functions and our event listeners!
 minesweeper.init = function() {
   minesweeper.setBombs();
-  // minesweeper.setNums();
-  minesweeper.clickSquare();
+  minesweeper.clickButton();
   minesweeper.closeResults();
   minesweeper.refreshPage();
 }

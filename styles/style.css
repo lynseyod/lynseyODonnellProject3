@@ -420,6 +420,8 @@ main > button:hover, main > button:focus {
 .gameContainer li button {
   background: none;
   border: none;
+  height: 100%;
+  width: 100%;
   font-size: 1rem;
 }
 
@@ -432,17 +434,6 @@ main > button:hover, main > button:focus {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#ff715b), to(#4c5454));
   background-image: linear-gradient(to bottom right, #ff715b, #4c5454);
   border: 1px solid #261d1a;
-}
-
-.gameContainer .flag::before {
-  content: '😻';
-  font-size: 1rem;
-  text-align: center;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
 }
 
 .gameContainer .unhidden {
