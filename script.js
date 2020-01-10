@@ -33,74 +33,59 @@ minesweeper.countdown = function () {
   $(".countdown").html(`${countdown}`);
 }
 
-// function to calculate how many bombs any square is touching.
-minesweeper.setNums = function(){
-  // for loop to work through the columns
+// function to find the number of the UL I've clicked on
+minesweeper.findUL = function(ulToFind) {
   for (i = 1; i <= 8; ++i) {
-    // nested for loop to work through each li in the column
-    for (j = 1; j <= 8; ++j) {
-      let bombNum = 0;
-      const thisSquare = $(`ul:nth-of-type(${i}) li:nth-of-type(${j})`);
-      // first for loop to get through previous, current and next column
-      for (x = -1; x <= 1; ++x) {
-        // second for loop for previous, current, and next row.
-        for (y = -1; y <= 1; ++y) {
-          const checkIt = $(`ul:nth-of-type(${i+x}) li:nth-of-type(${j+y})`);
-          if (checkIt !== thisSquare) { //current square doesn't need to be checked.
-            if (checkIt.hasClass("bomb")) {
-              bombNum += 1;
-            }
-          }
-        }
-      }
-      // only displays non-0 values and only for 'blanks' (not bombs)
-      if (bombNum !== 0 && thisSquare.hasClass("blank")) {
-        thisSquare.removeClass("blank").append(`<p class="num">${bombNum}</p>`);
-      }
+    const checkThisUl = $(`ul:nth-of-type(${i})`);
+    if (ulToFind[0] == checkThisUl[0]) {
+      return i;
+    }
+  }
+}
+
+// function to figure which row we've clicked on
+// I will figure out a way to merge this with the previous function IF IT KILLS ME.
+minesweeper.findLi = function (liToFind, ulNum) {
+  for (i = 1; i <= 8; ++i) {
+    const checkThisLi = $(`ul:nth-of-type(${ulNum}) li:nth-of-type(${i})`)
+    if (liToFind[0] == checkThisLi[0]) {
+      return i;
     }
   }
 }
 
 // function to check adjacent bombs when button is clicked.
 minesweeper.checkBombs = function(buttonIClicked) {
-  console.log(buttonIClicked)
   const parentLi = buttonIClicked.parent();
   const gParentUl = parentLi.parent();
   if (parentLi.hasClass("bomb")) {
-    console.log("bomb!")
     $(".results").addClass("gameEnd").append(`<h2>Oh no!</h2>
     <p>You woke up the cats! Better luck next time.</p>`);
     $(".bomb").removeClass("hidden").addClass("unhidden").html(`<p>🙀</p>`)
     $("li button").unbind("click"); //stop the event listener when we lose.
   } else {
-    // for loop to work through the columns
-    for (i = 1; i <= 8; ++i) {
-      // nested for loop to work through each li in the column
-      for (j = 1; j <= 8; ++j) {
-        let bombNum = 0;
-        const thisSquare = $(`ul:nth-of-type(${i}) li:nth-of-type(${j})`);
-        // first for loop to get through previous, current and next column
-        for (x = -1; x <= 1; ++x) {
-          // second for loop for previous, current, and next row.
-          for (y = -1; y <= 1; ++y) {
-            const checkIt = $(`ul:nth-of-type(${i+x}) li:nth-of-type(${j+y})`);
-            if (checkIt !== thisSquare) { //current square doesn't need to be checked.
-              if (checkIt.hasClass("bomb")) {
-                bombNum += 1;
-              }
-            }
-          }
-        }
-        // only displays non-0 values and only for 'blanks' (not bombs)
-        if (bombNum !== 0 && thisSquare.hasClass("blank")) {
-          thisSquare.removeClass("blank").append(`<p class="num">${bombNum}</p>`);
+    const colNum = minesweeper.findUL(gParentUl);
+    const rowNum = minesweeper.findLi(parentLi, colNum)
+    let bombNum = 0;
+    // start a for loop for our columns
+    for (i = colNum - 1; i <= colNum + 1; ++i) {
+      // second for loop for the rows!
+      for (j = rowNum - 1; j <= rowNum +1; ++j) {
+        const isThisABomb = $(`ul:nth-of-type(${i}) li:nth-of-type(${j})`)
+        if (isThisABomb.hasClass("bomb")) {
+          bombNum += 1;
         }
       }
+    }
+    parentLi.html("")
+    if (bombNum != 0) {
+      parentLi.append(`<p>${bombNum}</p>`);
     }
   }
 }
 
 // function for button clicking!
+// without this it's all just a pretty grid.
 minesweeper.clickButton = function() {
   $("li button").on("click", function(event) {
     event.preventDefault();
@@ -112,34 +97,7 @@ minesweeper.clickButton = function() {
       parentLi.removeClass("flag").addClass("unhidden");
       minesweeper.checkBombs($(this));
     }
-  })
-}
-
-// event listener for the clicks!
-// without this it's all just a pretty grid.
-minesweeper.clickSquare = function() {
-  $("ul").on("click", "li", function(){
-    // first check if it's hidden; first click "flags" a cat!
-    if ($(this).hasClass("hidden")) {
-      $(this).removeClass("hidden").addClass("flag");
-    } else if ($(this).hasClass("flag")) { //second click "unpacks" the box
-      $(this).removeClass("flag").addClass("unhidden");
-      if ($(this).hasClass("bomb")) {
-        $(".results").addClass("gameEnd").append(`<h2>Oh no!</h2>
-        <p>You woke up the cats! Better luck next time.</p>`);
-        $(".bomb").removeClass("hidden").addClass("unhidden").append(`<p>🙀</p>`)
-        $("ul").unbind("click"); //stop the event listener when we lose.
-      }
-    }
-    // update the countdown on click, so it removes "flagged" kitties.
-    minesweeper.countdown(); 
-
-    // check if we've won!
-    if ($(".unhidden").length === ($("li").length - $(".bomb").length)) {
-      $(".results").addClass("gameEnd").append(`<h2>You win!</h2>
-      <p>You unpacked all of the boxes you could without disturbing your sleeping kitties! Great work!</p>`);
-    $("ul").unbind("click"); //stop the event listener when we WIN!
-    }
+    minesweeper.countdown(); // reset our counter!
   })
 }
 
