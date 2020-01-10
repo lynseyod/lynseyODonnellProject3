@@ -8,7 +8,7 @@ const minesweeper = {};
 // this function randomly assigns bombs to squares in the grid!
 minesweeper.setBombs = function(){
   for (i = 1; i <= 10; ++i){
-    //because each column is a seperate ul, we can't just use li:nth-of-type
+    // because each column is a seperate ul, we can't just use li:nth-of-type
     // first select the column, then the li within it, to set the bombs!
     let randomCol = Math.floor(Math.random() * 8 + 1);
     let randomSquare = Math.floor(Math.random() * 8 + 1);
@@ -27,7 +27,7 @@ minesweeper.setBombs = function(){
   minesweeper.countdown();
 }
 
-//function to update our countdown!
+// function to update our countdown!
 minesweeper.countdown = function () {
   const countdown = $(".bomb").length - $(".flag").length;
   $(".countdown").html(`${countdown}`);
@@ -92,12 +92,19 @@ minesweeper.clickButton = function() {
     const parentLi = $(this).parent();
     if (parentLi.hasClass("hidden")) {
       parentLi.removeClass("hidden").addClass("flag");
-      $(this).html("C")
+      $(this).html("😻")
     } else if (parentLi.hasClass("flag")) {
       parentLi.removeClass("flag").addClass("unhidden");
       minesweeper.checkBombs($(this));
     }
     minesweeper.countdown(); // reset our counter!
+
+    // check if we've won!
+    if ($(".unhidden").length === ($("li").length - $(".bomb").length)) {
+      $(".results").addClass("gameEnd").append(`<h2>You win!</h2>
+      <p>You unpacked all of the boxes you could without disturbing your sleeping kitties! Great work!</p>`);
+    $("li button").unbind("click"); //stop the event listener when we WIN!
+    }
   })
 }
 
